@@ -1,0 +1,846 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>lab1</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(249, 228, 188, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="849832cf-9cc1-4a0f-b05f-d40d4710a697" class="page sans"><header><h1 class="page-title">lab1</h1><p class="page-description"></p></header><div class="page-body"><p id="0ae11941-fc58-45d3-abf9-539e4a64551e" class="">Here we have loaded a pretrained VGG model for classifying images in CIFAR10 dataset.</p><p id="f18a833d-16f3-4b6e-891b-12e4c7152fa1" class="">Let&#x27;s first evaluate the accuracy and model size of this model.</p><figure id="936ac7e1-ccc0-457c-a8b2-88fcd8b04328" class="image"><a href="lab1%20849832cf9cc14a0fb05fd40d4710a697/image.png"><img style="width:252px" src="lab1%20849832cf9cc14a0fb05fd40d4710a697/image.png"/></a></figure><p id="7763e295-5b04-4204-a6c1-3495d9177d1d" class="">Before we jump into pruning, let’s see the distribution of weight values in the dense model. </p><figure id="d6034ba5-9e12-4727-bcc6-3ce8d18fb5c5" class="image"><a href="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%201.png"><img style="width:680px" src="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%201.png"/></a></figure><p id="a4e77962-5c0d-4255-bfc0-ded9d70664df" class=""><strong>1-1</strong> What are the common characteristics of the weight distribution in the different layers?</p><p id="7ce9bb68-43c3-4918-a436-9f0148e4d1da" class="">N(0,1)을 따르는 경향을 보임. WEIGHT VALUE가 [-0.5,0.5] 사이에 분포함. </p><p id="58949ba5-e095-4942-b7cc-a895b71c5bad" class=""><strong>1-2</strong> How do these characteristics help pruning?</p><p id="7001e17a-5245-4f25-9b73-18163a3488de" class="">많은 WEIGHT을 0으로 만들기 쉬움. </p><p id="5f8f2f72-1a9e-4a97-b931-6c63193787c2" class=""><strong>Magnitude-based Pruning</strong></p><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">code(question2,3)</summary><div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e1f075e0-c106-41c3-9923-054a161ec182" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">def test_fine_grained_prune(test_tensor,test_mask,target_sparsity, target_nonzeros):
+    def plot_matrix(tensor, ax, title):
+        ax.imshow(tensor.cpu().numpy() == 0, vmin=0, vmax=1, cmap=&#x27;tab20c&#x27;)
+        ax.set_title(title)
+        ax.set_yticklabels([])
+        ax.set_xticklabels([])
+        for i in range(tensor.shape[1]):
+            for j in range(tensor.shape[0]):
+                text = ax.text(j, i, f&#x27;{tensor[i, j].item():.2f}&#x27;,
+                                ha=&quot;center&quot;, va=&quot;center&quot;, color=&quot;k&quot;)
+
+    test_tensor = test_tensor.clone()
+    fig, axes = plt.subplots(1,2, figsize=(6, 10))
+    ax_left, ax_right = axes.ravel()
+    plot_matrix(test_tensor, ax_left, &#x27;dense tensor&#x27;)
+
+    sparsity_before_pruning = get_sparsity(test_tensor)
+    mask = fine_grained_prune(test_tensor, target_sparsity)
+    sparsity_after_pruning = get_sparsity(test_tensor)
+    sparsity_of_mask = get_sparsity(mask)
+
+    plot_matrix(test_tensor, ax_right, &#x27;sparse tensor&#x27;)
+    fig.tight_layout()
+    plt.show()
+
+    print(&#x27;* Test fine_grained_prune()&#x27;)
+    print(f&#x27;    target sparsity: {target_sparsity:.2f}&#x27;)
+    print(f&#x27;        sparsity before pruning: {sparsity_before_pruning:.2f}&#x27;)
+    print(f&#x27;        sparsity after pruning: {sparsity_after_pruning:.2f}&#x27;)
+    print(f&#x27;        sparsity of pruning mask: {sparsity_of_mask:.2f}&#x27;)
+
+    if target_nonzeros is None:
+        if test_mask.equal(mask):
+            print(&#x27;* Test passed.&#x27;)
+        else:
+            print(&#x27;* Test failed.&#x27;)
+    else:
+        if mask.count_nonzero() == target_nonzeros:
+            print(&#x27;* Test passed.&#x27;)
+        else:
+            print(&#x27;* Test failed.&#x27;)</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="affdc21d-e13b-4cb5-a786-319da3525277" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">def fine_grained_prune(tensor: torch.Tensor, sparsity : float) -&gt; torch.Tensor:
+    &quot;&quot;&quot;
+    magnitude-based pruning for single tensor
+    :param tensor: torch.(cuda.)Tensor, weight of conv/fc layer
+    :param sparsity: float, pruning sparsity
+        sparsity = #zeros / #elements = 1 - #nonzeros / #elements
+    :return:
+        torch.(cuda.)Tensor, mask for zeros
+    &quot;&quot;&quot;
+    sparsity = min(max(0.0, sparsity), 1.0)
+    if sparsity == 1.0:
+        tensor.zero_()
+        return torch.zeros_like(tensor)
+    elif sparsity == 0.0:
+        return torch.ones_like(tensor)
+
+    num_elements = tensor.numel()
+
+    ##################### YOUR CODE STARTS HERE ####ㅁ#################
+    # Step 1: calculate the #zeros (please use round())
+    num_zeros = round(num_elements * sparsity)
+    print(&quot;num zeros는  &quot;,num_zeros)
+    # Step 2: calculate the importance of weight
+    importance = torch.abs(tensor)
+    print(&quot;importance of weight tensor =&gt; &quot;, importance)
+    # Step 3: calculate the pruning threshold
+    threshold = torch.kthvalue(importance.flatten(), num_zeros)[0]
+    print(&quot;threshold= &quot;, threshold)
+    #imoprtance가 threshold보다 작으면 지우기 위함. 
+    # Step 4: get binary mask (1 for nonzeros, 0 for zeros)
+    mask = importance &gt; threshold
+    ##################### YOUR CODE ENDS HERE #######################
+
+    # Step 5: apply mask to prune the tensor
+    tensor.mul_(mask)
+
+    return mask</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6467b25d-c010-44f2-9039-452f1c90c8ae" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">class FineGrainedPruner:
+    def __init__(self, model, sparsity_dict):
+        self.masks = FineGrainedPruner.prune(model, sparsity_dict)
+
+    @torch.no_grad() #해당 함수가 실행되는 동안 gradient 연산을 막음.
+    def apply(self, model):
+        for name, param in model.named_parameters():
+            if name in self.masks:
+                param *= self.masks[name]
+
+    @staticmethod
+    @torch.no_grad()
+    def prune(model, sparsity_dict):
+        masks = dict()
+        for name, param in model.named_parameters():
+            if param.dim() &gt; 1: # we only prune conv and fc weights
+                masks[name] = fine_grained_prune(param, sparsity_dict[name])
+        return masks</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9cb0f9ce-64e3-4e50-91c4-a736b6427fb8" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">##################### YOUR CODE STARTS HERE #####################
+target_sparsity = (15/25) # please modify the value of target_sparsity
+#non-zero가 10개여야하니까
+##################### YOUR CODE ENDS HERE #####################
+test_fine_grained_prune(target_sparsity=target_sparsity, target_nonzeros=10)</code></pre><p id="88fc9159-06e1-4003-a710-64ef87719ddb" class="">
+</p></div></details><p id="48a5d812-77be-4f8f-ae60-859e1f4be1f7" class=""><strong>4-1</strong> What&#x27;s the relationship between pruning sparsity and model accuracy? (<em>i.e.</em>, does accuracy increase or decrease when sparsity becomes higher?)<br/>    sparsity가 증가할수록 acc의 감소가 커진다. <br/></p><p id="eadd3411-b0de-4e15-a045-973880212574" class=""><strong>4-2</strong> Do all the layers have the same sensitivity?<div class="indented"><p id="71819bce-6f77-485a-9cc9-cac986489d37" class="">아니다. </p></div></p><p id="61bcb492-28b5-4709-a787-30be48800553" class=""><strong>4-3</strong> Which layer is the most sensitive to the pruning sparsity?</p><figure id="1cc2fc66-2e6c-44ee-8565-e1d5b8396cc7" class="image"><a href="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%202.png"><img style="width:680px" src="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%202.png"/></a></figure><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">code( question 5,6)</summary><div class="indented"><p id="ac35ecef-0517-4bcc-baa0-a774f04bed1e" class="">더 많은 파라미터를 가질수록 sparse해서 pruning할 weight가 크다. </p><figure id="584d9630-5d34-409e-be11-31b9653248a8" class="image"><a href="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%203.png"><img style="width:576px" src="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%203.png"/></a></figure><p id="ad681746-6d2e-4210-98e7-320941560def" class="">위 그래프에서 보이듯  layer별 민감도에 따라 sparsity가 증가하면 더 급격하게 acc감소가 발생할 것이다. </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="97814a62-5c46-4363-894f-4685fabe1b36" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">recover_model()
+
+sparsity_dict = {
+##################### YOUR CODE STARTS HERE #####################
+    # please modify the sparsity value of each layer
+    # please DO NOT modify the key of sparsity_dict
+    &#x27;backbone.conv0.weight&#x27;: 0,
+    &#x27;backbone.conv1.weight&#x27;: 0,
+    &#x27;backbone.conv2.weight&#x27;: 0,
+    &#x27;backbone.conv3.weight&#x27;: 0.8,
+    &#x27;backbone.conv4.weight&#x27;: 0.7,
+    &#x27;backbone.conv5.weight&#x27;: 0.6,
+    &#x27;backbone.conv6.weight&#x27;: 0.6,
+    &#x27;backbone.conv7.weight&#x27;: 0.6,
+    &#x27;classifier.weight&#x27;: 0
+##################### YOUR CODE ENDS HERE #######################
+}</code></pre><p id="62f9a308-bc49-4b58-9362-713a62092d3a" class="">Please make sure that after pruning, the sparse model is 25% of the size of the dense model, and validation accuracy is higher than 92.5 after finetuning.</p><p id="54071b74-5106-4d42-989d-79eb20c44524" class="">92.5 after finetuning 보다 높게 나와야함. </p><figure id="81e3200d-ab4a-45eb-aa7b-b2dfcb51997b" class="image"><a href="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%204.png"><img style="width:445px" src="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%204.png"/></a></figure><p id="a0e9cf8b-14db-49c5-aaa6-d7e89622437f" class=""><strong>Channel pruning</strong> removes an entire channel, so that it can achieve inference speed up on existing hardware like GPUs.</p><p id="f08a6f1d-89ef-4140-b2cc-c47ab1658284" class="">we can remove the weights entirely from the tensor in channel pruning.</p><figure id="7f53d2b2-9024-48fb-a423-b72d4e1cbc88" class="image"><a href="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%205.png"><img style="width:489px" src="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%205.png"/></a></figure><p id="880d15c8-2206-408d-a6b1-5d2e6b39a498" class=""><strong>6 </strong> 유지되는 channel 숫자는 1에서 prune ratio를 뺀 값에 곱하면 됨.   </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5261adf0-aa7a-4036-a862-011e77654349" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">int(round((1-prune_ratio)*channels))</code></pre><p id="5f62e3f2-9f64-4b37-82cc-85977eb58149" class="">naive하게 30%의 channel을 prune하면 92.5 → 28.14가 됨. </p></div></details><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">code( question 7)</summary><div class="indented"><p id="671af3e1-c216-4552-b0a2-f897f2a3ec76" class="">importance를 측정해서 덜 중요한 channel을 없애는 것이 중요함. </p><p id="035df5a1-ff6a-41bc-b4fe-ede85ab72b65" class="">channel 별 importance를 측정하기 위해 Frobenius norm을 활용하여 weight tensor slice의 norm을 계산함. </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2156ffb2-6dad-4a53-aba2-2ef9314449bb" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># function to sort the channels from important to non-important
+def get_input_channel_importance(weight):
+    in_channels = weight.shape[1]
+    importances = []
+    # compute the importance for each input channel
+    for i_c in range(weight.shape[1]):
+        channel_weight = weight.detach()[:, i_c]
+        ##################### YOUR CODE STARTS HERE #####################
+        importance = torch.norm(channel_weight, p=&#x27;fro&#x27;)
+        ##################### YOUR CODE ENDS HERE #####################
+        importances.append(importance.view(1))
+    return torch.cat(importances)</code></pre><p id="46ec29eb-415c-4723-b0b0-288833a27459" class="">computed importance에 따라 reordering을 진행하여 정렬함. </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9e9dd8c6-d84d-4c0d-83c5-88a1f4f42022" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all">@torch.no_grad()
+def apply_channel_sorting(model):
+    model = copy.deepcopy(model)  # do not modify the original model
+    # fetch all the conv and bn layers from the backbone
+    all_convs = [m for m in model.backbone if isinstance(m, nn.Conv2d)]
+    all_bns = [m for m in model.backbone if isinstance(m, nn.BatchNorm2d)]
+    # iterate through conv layers
+    for i_conv in range(len(all_convs) - 1):
+        # each channel sorting index, we need to apply it to:
+        # - the output dimension of the previous conv
+        # - the previous BN layer
+        # - the input dimension of the next conv (we compute importance here)
+        prev_conv = all_convs[i_conv]
+        prev_bn = all_bns[i_conv]
+        next_conv = all_convs[i_conv + 1]
+        # note that we always compute the importance according to input channels
+        importance = get_input_channel_importance(next_conv.weight)
+        # sorting from large to small
+        sort_idx = torch.argsort(importance, descending=True)
+
+        # apply to previous conv and its following bn
+        prev_conv.weight.copy_(torch.index_select(
+            prev_conv.weight.detach(), 0, sort_idx))
+        for tensor_name in [&#x27;weight&#x27;, &#x27;bias&#x27;, &#x27;running_mean&#x27;, &#x27;running_var&#x27;]:
+            tensor_to_apply = getattr(prev_bn, tensor_name)
+            tensor_to_apply.copy_(
+                torch.index_select(tensor_to_apply.detach(), 0, sort_idx)
+            )
+
+        # apply to the next conv input (hint: one line of code)
+        ##################### YOUR CODE STARTS HERE #####################
+        next_conv.weight.copy_(torch.index_select(next_conv.weight.detach(), 1, sort_idx))
+        ##################### YOUR CODE ENDS HERE #####################
+
+    return model</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="23341626-3b26-4a8f-aa11-7e388795e75d" class="code"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"> * Without sorting pruned model has accuracy=28.14%
+ * With sorting pruned model has accuracy=36.81% -&gt; 향상되긴 했지만 여전히 저조함. 
+ 
+ fine-tuning을 시키면 92.28%로 성능이 복구되긴함. </code></pre><figure id="5175825d-2854-44fd-b624-8c33b4fbd8d2" class="image"><a href="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%206.png"><img style="width:453px" src="lab1%20849832cf9cc14a0fb05fd40d4710a697/image%206.png"/></a></figure></div></details><p id="6745a02b-d1ea-4a1c-ab19-f361017cce88" class=""><strong>8.1</strong> Explain why removing 30% of channels roughly leads to 50% computation reduction.<div class="indented"><p id="d5bddbb6-70de-4d2a-81e5-8a3fcbd79208" class="">(1 - 30%)^2 = 0.49</p></div></p><p id="bb054817-25c7-4bed-ac8d-304c1b2d6969" class=""><strong>8.2</strong> Explain why the latency reduction ratio is slightly smaller than computation reduction.<div class="indented"><p id="aad03e66-ae14-4913-8a19-c4c0e08c6923" class="">We should consider data movement as well.</p></div></p><p id="8604a934-b612-4189-82c9-05214e8f3427" class=""><strong>9.1</strong> Advantages and Disadvantages of Fine-Grained Pruning and Channel Pruning<div class="indented"><ul id="843b22a6-0e98-4184-9741-558b151a5454" class="bulleted-list"><li style="list-style-type:disc">Fine-Grained Pruning:<ul id="b210e3c8-70ed-4eb0-b5f7-7918a694bf8e" class="bulleted-list"><li style="list-style-type:circle">Pros<ul id="a1e1fbfa-f4f2-4222-acf9-30d9af2894e1" class="bulleted-list"><li style="list-style-type:square">High Compression Ratio</li></ul><ul id="113b92ae-702c-4c77-b1a3-2b27600e0bbd" class="bulleted-list"><li style="list-style-type:square">Flexibility</li></ul><ul id="e210dd38-5112-43d5-9fdd-564803bcca88" class="bulleted-list"><li style="list-style-type:square">Compatibility with Dense Layers</li></ul></li></ul><ul id="0e4aacb3-1e37-4348-93db-213d0a431615" class="bulleted-list"><li style="list-style-type:circle">Cons<ul id="d981c0ec-c635-4aa4-9923-d59757686f29" class="bulleted-list"><li style="list-style-type:square">Complexity in Hardware Support</li></ul><ul id="1f971a96-87c2-4494-ad61-961bd5a0f180" class="bulleted-list"><li style="list-style-type:square">Latency Issues</li></ul><ul id="c34c2982-c9ca-4edb-8657-22a2baff9284" class="bulleted-list"><li style="list-style-type:square">Implementation Complexity</li></ul></li></ul></li></ul><ul id="9edc0bae-fc84-4804-bab7-430fb278b5c9" class="bulleted-list"><li style="list-style-type:disc">Channel Pruning<ul id="18d63f24-14bc-4c11-8c35-9d3d19f84f14" class="bulleted-list"><li style="list-style-type:circle">Pros<ul id="87cdb2dc-58ba-4967-8042-42d93af012c4" class="bulleted-list"><li style="list-style-type:square">Improved Latency</li></ul><ul id="97028bc0-7dd4-44cc-9d46-0c85dd3a8856" class="bulleted-list"><li style="list-style-type:square">Better Hardware Support</li></ul><ul id="a90dd838-285b-4258-9a6a-613a3e3da566" class="bulleted-list"><li style="list-style-type:square">Structural Simplicity</li></ul></li></ul><ul id="48fae203-16ff-4083-af85-2e0b546e2ce8" class="bulleted-list"><li style="list-style-type:circle">Cons<ul id="83010ec0-d8e1-473c-99d9-4875e5431515" class="bulleted-list"><li style="list-style-type:square">Lower Compression Ratio</li></ul><ul id="ef8465f5-7da2-4827-a2db-0657517553aa" class="bulleted-list"><li style="list-style-type:square">Potential Accuracy Loss</li></ul><ul id="e937dc92-5db3-4203-a73b-bf4364197cae" class="bulleted-list"><li style="list-style-type:square">Limited Flexibility<br/><br/><br/></li></ul></li></ul></li></ul></div></p><p id="eabc59c7-323a-458f-aea2-0595075fe11e" class=""><strong>9.2</strong> On-device에서 어떤 pruning method? why?<div class="indented"><p id="1ffa93b7-ddea-4dcb-8e47-b34d48ed6c97" class="">[channel pruning], <strong>1. Latency Improvement </strong>(reduces the computational workload, leading to smaller, more regular matrix operations) <strong>2. Hardware Compatibility</strong> (channel pruning maintains the dense structure of the model) <strong>3. Simplicity in Deployment </strong>(remain structurally similar to the original)</p></div></p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
